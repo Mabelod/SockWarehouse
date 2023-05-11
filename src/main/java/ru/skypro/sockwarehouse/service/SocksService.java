@@ -40,7 +40,7 @@ public class SocksService {
         if (cottonPart < 0 || cottonPart > 100) throw new InvalidParameterException();
         switch (operation) {
             case "moreThan": {
-                Integer counter = socksRepository.getMoreSocks(color, cottonPart);
+                Integer counter = socksRepository.getMoreSocks(color.toLowerCase(), cottonPart);
                 if (counter == null) throw new SocksNotFoundException();
                 else {
                     return checkingTheNumberOfSocks(counter);
@@ -48,7 +48,7 @@ public class SocksService {
             }
 
             case "lessThan": {
-                Integer counter = socksRepository.getFewerSocks(color, cottonPart);
+                Integer counter = socksRepository.getFewerSocks(color.toLowerCase(), cottonPart);
                 if (counter == null) throw new SocksNotFoundException();
                 else {
                     return checkingTheNumberOfSocks(counter);
@@ -56,7 +56,7 @@ public class SocksService {
             }
 
             case "equal": {
-                Integer counter = socksRepository.getTheSameNumberOfSocks(color, cottonPart);
+                Integer counter = socksRepository.getTheSameNumberOfSocks(color.toLowerCase(), cottonPart);
                 if (counter == null) throw new SocksNotFoundException();
                 else {
                     return checkingTheNumberOfSocks(counter);
